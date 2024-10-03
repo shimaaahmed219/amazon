@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Navbar</title>
+  <!-- font-awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/headerstyle.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+      <img src="assets/logo.1c9be0b254d3ff1dc9e9.png" alt="Amazon" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+    <!-- تسليم إلى الموقع -->
+    <i class="fa-solid fa-location-dot p-1" style="color: white;"></i>
+    <div class="navbar-text location me-auto">
+      <span>Deliver to</span><br>
+      <span>Egypt</span>
+    </div>
+
+    <!-- شريط البحث -->
+    <form class="d-flex search-bar d-none d-lg-flex ">
+      <div class="dropdown">
+        <button class="btn btn-secondary  dropdown-toggle rounded-1 me-0" aria-setsize="5" type="button" id="dropdownMenuButton" aria-expanded="false">
+          All
+        </button>
+        <ul class="dropdown-menu selected" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">Automotive</a></li>
+          <li><a class="dropdown-item" href="#">Baby</a></li>
+          <li><a class="dropdown-item" href="#">Beauty & Personal Care</a></li>
+          <li><a class="dropdown-item" href="#">Books</a></li>
+          <li><a class="dropdown-item" href="#">Boys' Fashion</a></li>
+          <li><a class="dropdown-item" href="#">Computers</a></li>
+          <li><a class="dropdown-item" href="#">Deals</a></li>
+          <li><a class="dropdown-item" href="#">Digital Music</a></li>
+          <li><a class="dropdown-item" href="#">Electronics</a></li>
+          <li><a class="dropdown-item" href="#">Girls' Fashion</a></li>
+        </ul>
+      </div>
+      <input class="form-control me-0" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-search" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <!-- روابط الحساب والعربة -->
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown my-0 py-2">
+        <a class="nav-link dropdown-toggle " href="login.html" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <strong style="font-size: x-small; color: grey;">Hello, signin</strong><br> Accounts & Lists
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+          <li><a class="dropdown-item" href="login.html">Sign in </a></li>
+          <li><a class="dropdown-item" href="login.html">Account </a></li> 
+        </ul>
+      </li>
+      <li class="nav-item text-center p-3">
+        
+        <a class="nav-link" href="#"><i class="fa-solid fa-heart p-0" style="color: antiquewhite;"></i> add wish  list</a>
+      </li>
+      <li class="nav-item text-center p-3 ">
+        <a class="nav-link text-center  mb-3" href="#">
+          <span class="count_item p-0" >0</span><i class="fa-solid fa-cart-shopping  p-0" style="color: white;"></i>
+          <span class="">Cart</span> 
+        </a>
+      </li>
+    
+    </ul>
+  </div>
+</nav>
+<!------------------------------------- header ------------------------->
+<nav class="navbar navbar-expand-lg header-custom">
+  <div class="container-fluid">
+    <!-- أيقونة القائمة الجانبية -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- روابط التنقل -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav text-center mt-3">
+        <li class="nav-item ">
+          <a class="nav-link text-center" id="toggleicon" onclick="open_sidebar()" href="#"><i class="fa-solid fa-bars" style="color: aliceblue;"></i>All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Today's Deals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Customer Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gift Cards</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Registry</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sell</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+   <!---------------------- sidebar ------------------------>
+   <div class="d-flex sidebar ">
+ 
+    <div class=" text-white hidden p-3" id="sidebar" style="width: 300px; ">
+      <button type="button" class="btn-close btn-light text-reset bg-secondary " data-bs-dismiss="sidebar" onclick="close_cart()" aria-setsize="4" aria-label="Close"></button>
+        <h2 class="text-center bg-black">Hello, Sign In</h2>
+        <p>Digital Content & Devices</p>
+        <ul class="sidebar flex-column list-unstyled">
+            <li class="sidebar-item">
+                <a class="sidebar-link text-black text-decoration-none" href="#">Amazon Music</a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link text-black text-decoration-none" href="#"> Kindle E-readers & Books</a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link text-black text-decoration-none" href="#"> Amazon Appstore</a>
+            </li>
+          </ul>
+            <hr>
+            <p>Shop By Department</p>
+            <ul class="sidebar flex-column list-unstyled">
+            <li class="sidebar-item">
+                <a class="sidebar-link text-black text-decoration-none" href="#">Electronics</a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link text-black text-decoration-none" href="#">Computers</a>
+          </li>
+          <li class="sidebar-item">
+              <a class="sidebar-link text-black text-decoration-none" href="#">Smart Home </a>  
+          </li>
+        </ul>
+        <hr>
+        <p>Programs & Features</p>
+        <ul class="sidebar flex-column list-unstyled ">
+          <li class="sidebar-item">
+              <a class="sidebar-link text-black text-decoration-none" href="#">Gift Cards</a>
+          </li>
+          <li class="sidebar-item">
+              <a class="sidebar-link text-black text-decoration-none" href="#">Amazon live</a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link text-black text-decoration-none" href="#">International Shopping</a>
+        </li>
+        </ul>
+    </div>
+ 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

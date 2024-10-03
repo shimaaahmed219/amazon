@@ -1,0 +1,192 @@
+body{
+    background-color: rgb(240, 232, 232);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.navbar-custom {
+    background-color: #040607;
+    height: 80px;
+  }
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link,
+  .navbar-custom .navbar-text {
+    color: white; 
+    font-size: medium;
+  }
+  i{
+    font-size:x-large;
+  }
+
+  .navbar-custom .location {
+    color: #ccc; 
+    font-size: 0.9rem;
+  }
+  .search-bar {
+    width: 50%;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+ 
+  
+  .btn-search {
+    background-color: #f3a847; 
+    border: none;
+    border-radius: 0;
+  }
+  .navbar-nav .dropdown-menu {
+    background-color: #232F3E;
+    color: white;
+  }
+  .navbar-nav .dropdown-item {
+    color: white;
+  }
+  .cart-icon {
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .dropdown-menu {
+    max-height: 200px; 
+    overflow-y: auto; 
+  }
+  .dropdown-item{
+    cursor: pointer;
+  }
+  .selected .dropdown-item :hover{
+    text-decoration: underline;
+    background-color: white;
+  }
+  
+  /**************************** header ****************************************/
+  .header-custom {
+    background-color: #232F3E; 
+   height: 40px;
+   width: 100%;
+   font-size: small;
+  }
+  .header-custom .nav-link {
+    color: white;
+    margin-left: 20px;
+  }
+  .header-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1); 
+  }
+  .header-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+   .nav-link:hover {
+    border: #ccc solid 1px;
+  }
+/********************************** sidebar ******************************/
+
+
+.sidebar p{
+color: #000;
+
+font-weight: 700;
+}
+#sidebar {
+  top: 0;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  color: #000;
+    background-color:white;
+    transition: transform 0.3s ease;
+}
+
+#sidebar.hidden {
+    transform: translateX(-350px);
+}
+
+.btn-close {
+    margin: 10px;
+    position: absolute;
+      top: 10px;
+      left: 250px;  
+}
+
+  /***************************** sign in*************************** */
+  .signin {
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+
+  }
+  .signin-logo img {
+    display: block;
+    margin: 10px auto 10px;
+    height: 40px;
+  }
+  .signin-btn {
+    background-color: #f3a847;
+    border: none;
+    color: black;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+  }
+  .signin-btn:hover {
+    background: linear-gradient(to bottom,  #d68a2b, #f3a847,  #d6892b); 
+  }
+ 
+  .text-with-lines {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+  .text-with-lines::before, .text-with-lines::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #000; 
+    margin: 0 10px;
+  }
+
+  .btn-group{
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+  }
+  .create-account-btn {
+    background: linear-gradient(to top,  #cbd8db, rgb(240, 232, 232), #cbd8db);
+    border: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    color: black;
+    flex-wrap: wrap;
+    
+  }
+  .create-account-btn:hover {
+    background: linear-gradient(to bottom,  #cbd3db, rgb(240, 232, 232),  #e7e9ec);
+  }
+  .form-text {
+    margin-top: 10px;
+    color: #000;
+    font-size:smaller;
+  }
+  .form-text a{
+   text-decoration: none;
+  }
+  .privacy{
+    font-size:xx-small;
+    margin: 50px 0;
+  }
+  footer{
+    align-items: center;
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    color: #000;
+    text-align: center;
+    display: flex;
+    background: linear-gradient(to bottom,  #cbd3db, rgb(240, 232, 232),  #e7e9ec);
+
+  }
+ 
