@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Sign In</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/headerstyle.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+ <!-- شعار أمازون -->
+ <div class="signin-logo">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+</div>
+<div class="container signin">
+ 
+  <!-- نموذج تسجيل الدخول -->
+  <form id="loginForm">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email or mobile phone number</label>
+      <input type="email" class="form-control" id="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" required>
+    </div>
+
+    <button type="submit" class="btn btn-secondary signin-btn "  value="login">continue</button>
+
+    <div class="form-text">
+      By continuing, you agree to Amazon's <a href=""> Conditions of Use</a> and <a href="">Privacy Notice.</a> 
+    </div>
+    <a class="privacy" href="">Need help?</a>
+  </form>
+</div>
+<!-- بعد الفورم -->
+<div class="container d-grid  mt-0">
+  <div class="row justify-content-center">
+    <div class="col-6  text-center">
+      <div class="text-with-lines my-0">
+        <span>New to Amazon?</span>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- زر إنشاء حساب جديد -->
+  <div class=" btn-group text-center w-25">
+  <button class="btn create-account-btn  w-25 text-center" >Create your Amazon account</button>
+  </div>
+  <!-- نهاية الصفحة -->
+  <footer class="container flex-column align-content-center footr-login">
+    <div class="d-flex align-items-start">
+      <a href="">Conditions of Use</a><a href="">Privacy Notice</a><a href="">help</a>
+    </div>
+    <div class="d-flex align-items-end">
+    <p class="inc">©1996–2024, ArabCode.com, Inc. or its affiliates</p>
+  </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>
