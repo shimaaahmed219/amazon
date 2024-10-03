@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    
+    <title>Wish List</title>
+
+    <style>
+        /* Custom styles for the wishlist */
+        .wishlist-container {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .product-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+        .product-card img {
+            max-height: 150px;  
+            object-fit: contain;  
+            width: 100%;  
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .total-card {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container wishlist-container">
+        <div class="wishlist-header text-center d-flex justify-content-between align-items-center">
+            <h1>Shopping Cart</h1>
+            <h3 class="text-primary">Subtitle</h3>
+            <hr>
+        </div>
+        <div id="wishlist-product" class="row"></div>
+        <div class="text-center">
+            <button class="btn btn-danger w-50 mt-5" onclick="clearAll()">Clear All</button>
+        </div>
+
+        <div id="total-price-card" class="total-card">
+            <p class="text-dark">Your order Qualifier for free shipping choose this option at checkout see details.</p>
+            <h3 id="total-price" class="text-center ">Total Price: $0.00</h3>
+            <div class="text-center">
+                <button class="btn btn-info w-50 mt-2" onclick="">Proceed To pay</button>
+            </div>    
+            </div>
+        </div>
+
+        <div id="toast" class="position-fixed top-0 end-0 p-3" style="z-index: 11;">
+            <div id="toast-message" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body">
+                    Product deleted successfully!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to initialize and display the wishlist
+        function initializeWishlist() {
+            let wishListProducts = JSON.parse(localStorage.getItem('wishListProducts')) || [];
+
+            // Ensure quantity is set to 1 for each product
+            wishListProducts = wishListProducts.map(product => {
+                if (!product.quantity) {
+                    product.quantity = 1;  // Default to 1
+                }
+                return product;
+            });
+
+            displayProducts(wishListProducts);
+
+            function displayProducts(products) {
+                const wishlistProductContainer = document.getElementById('wishlist-product');
+                wishlistProductContainer.innerHTML = '';  // Clear existing content
+
+                if (products.length > 0) {
+                    products.forEach((product, index) => {
+                        wishlistProductContainer.innerHTML += `
+                            <div class="col-12">
+                                <div class="card product-card">
+                                    <img src="${product.image}" class="card-img-top" alt="${product.title}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${product.title}</h5>
+                                        <p class="card-text">${product.description}</p>
+                                        <p class="card-text"><strong>Price:</strong> $${product.price.toFixed(2)}</p>
+                                        <p class="card-text rating">Rating: ${product.rating.rate} ★ (${product.rating.count} reviews)</p>
+
+                                        <div class="quantity-controls">
+                                            <button class="btn btn-secondary" onclick="updateQuantity(${index}, -1)">-</button>
+                                            <span id="product-quantity-${index}">${product.quantity}</span>
+                                            <button class="btn btn-secondary" onclick="updateQuantity(${index}, 1)">+</button>
+                                        </div>
+
+                                        <p class="mt-3"><strong>Total Price:</strong> $${(product.price * product.quantity).toFixed(2)}</p>
+                                        
+                                        <button class="btn btn-danger" onclick="deleteProduct(${index})">Delete Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    calculateTotalPrice(products);  // Calculate initial total price
+                } else {
+                    wishlistProductContainer.innerHTML = `
+                        <div class="alert alert-warning text-center">
+                            No products in your wish list.
+                        </div>
+                    `;
+                }
+            }
+
+            window.updateQuantity = function(index, change) {
+                if (change === 1) {
+                    wishListProducts[index].quantity++;  
+                } else if (change === -1 && wishListProducts[index].quantity > 1) {
+                    wishListProducts[index].quantity--; 
+                }
+                localStorage.setItem('wishListProducts', JSON.stringify(wishListProducts));  // Update localStorage
+                displayProducts(wishListProducts);  
+            }
+
+            window.deleteProduct = function(index) {
+                wishListProducts.splice(index, 1);  
+                localStorage.setItem('wishListProducts', JSON.stringify(wishListProducts));  
+                displayProducts(wishListProducts);  
+                showToast("Product deleted successfully!"); 
+            }
+
+            window.clearAll = function() {
+                wishListProducts = [];  
+                localStorage.setItem('wishListProducts', JSON.stringify(wishListProducts));  
+                displayProducts(wishListProducts); 
+                document.getElementById('total-price').textContent = 'Total Price: $0.00';  
+                showToast("All products cleared!");  
+            }
+
+            function calculateTotalPrice(products) {
+                const totalPrice = products.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+                document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+            }
+
+            function showToast(message) {
+                const toast = document.getElementById('toast-message');
+                toast.querySelector('.toast-body').textContent = message;
+                const bsToast = new bootstrap.Toast(toast);
+                bsToast.show();
+            }
+        }
+
+      
+        initializeWishlist();
+ 
+    </script> 
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
